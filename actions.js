@@ -1,20 +1,20 @@
-export const ADD_ENTITIES = 'ADD_ENTITIES'
+export const ADD_ENTITIES = '@@normalizr/ADD_ENTITIES'
 
-export const LOAD_ENTITY = 'LOAD_ENTITY'
-export const LOAD_ENTITY_SUCCESS = 'LOAD_ENTITY_SUCCESS'
-export const LOAD_ENTITY_FAILURE = 'LOAD_ENTITY_FAILURE'
+export const LOAD_ENTITY = '@@normalizr/LOAD_ENTITY'
+export const LOAD_ENTITY_SUCCESS = '@@normalizr/LOAD_ENTITY_SUCCESS'
+export const LOAD_ENTITY_FAILURE = '@@normalizr/LOAD_ENTITY_FAILURE'
 
-export const UPDATE_ENTITY = 'UPDATE_ENTITY'
-export const UPDATE_ENTITY_SUCCESS = 'UPDATE_ENTITY_SUCCESS'
-export const UPDATE_ENTITY_FAILURE = 'UPDATE_ENTITY_FAILURE'
+export const UPDATE_ENTITY = '@@normalizr/UPDATE_ENTITY'
+export const UPDATE_ENTITY_SUCCESS = '@@normalizr/UPDATE_ENTITY_SUCCESS'
+export const UPDATE_ENTITY_FAILURE = '@@normalizr/UPDATE_ENTITY_FAILURE'
 
-export const DEL_ENTITY = 'DEL_ENTITY'
-export const DEL_ENTITY_SUCCESS = 'DEL_ENTITY_SUCCESS'
-export const DEL_ENTITY_FAILURE = 'DEL_ENTITY_FAILURE'
+export const DEL_ENTITY = '@@normalizr/DEL_ENTITY'
+export const DEL_ENTITY_SUCCESS = '@@normalizr/DEL_ENTITY_SUCCESS'
+export const DEL_ENTITY_FAILURE = '@@normalizr/DEL_ENTITY_FAILURE'
 
-export const INSERT_ENTITY = 'INSERT_ENTITY'
-export const INSERT_ENTITY_SUCCESS = 'INSERT_ENTITY_SUCCESS'
-export const INSERT_ENTITY_FAILURE = 'INSERT_ENTITY_FAILURE'
+export const INSERT_ENTITY = '@@normalizr/INSERT_ENTITY'
+export const INSERT_ENTITY_SUCCESS = '@@normalizr/INSERT_ENTITY_SUCCESS'
+export const INSERT_ENTITY_FAILURE = '@@normalizr/INSERT_ENTITY_FAILURE'
 
 export const add = (payload) => ({
   type: ADD_ENTITIES,
@@ -22,82 +22,82 @@ export const add = (payload) => ({
 })
 
 // load
-export const load = (entity, id) => ({
+export const load = (schema, id) => ({
   type: LOAD_ENTITY,
-  entity,
+  schema,
   id
 })
 
-export const loadSuccess = (entity, id, payload) => ({
+export const loadSuccess = (schema, id, payload) => ({
   type: LOAD_ENTITY_SUCCESS,
-  entity,
+  schema,
   id,
   payload
 })
 
-export const loadFailure = (entity, id, payload) => ({
+export const loadFailure = (schema, id, payload) => ({
   type: UPDATE_ENTITY_FAILURE,
-  entity,
+  schema,
   id,
   payload
 })
 
 // update
-export const update = (entity, id) => ({
+export const update = (schema, id) => ({
   type: UPDATE_ENTITY,
-  entity,
+  schema,
   id
 })
 
-export const updateSuccess = (entity, id, payload) => ({
+export const updateSuccess = (schema, id, payload) => ({
   type: UPDATE_ENTITY_SUCCESS,
-  entity,
+  schema,
   id,
   payload
 })
 
-export const updateFailure = (entity, id, payload) => ({
+export const updateFailure = (schema, id, payload) => ({
   type: LOAD_ENTITY_FAILURE,
-  entity,
+  schema,
   id,
   payload
 })
 
 // del
-export const del = (entity, id) => ({
+export const del = (schema, id) => ({
   type: DEL_ENTITY,
-  entity,
+  schema,
   id
 })
 
-export const delSuccess = (entity, id) => ({
+export const delSuccess = (schema, id) => ({
   type: DEL_ENTITY_SUCCESS,
-  entity,
+  schema,
   id
 })
 
-export const delFailure = (entity, id, payload) => ({
+export const delFailure = (schema, id, payload) => ({
   type: DEL_ENTITY_FAILURE,
-  entity,
+  schema,
   id,
   payload
 })
 
 // insert
-export const insert = (entity) => ({
+export const insert = (schema) => ({
   type: INSERT_ENTITY,
-  entity
+  schema
 })
 
-export const insertSuccess = (entity, payload) => ({
+export const insertSuccess = (schema, payload) => ({
   type: INSERT_ENTITY_SUCCESS,
-  entity,
+  schema,
   payload
 })
 
-export const insertFailure = (entity, payload) => ({
+export const insertFailure = (schema, payload) => ({
   type: INSERT_ENTITY_FAILURE,
-  entity,
+  schema,
   payload
 })
 
