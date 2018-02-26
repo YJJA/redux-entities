@@ -18,7 +18,10 @@ import {
 
 const addEntitiesByKey = (state = {}, key, entities) => {
   const nextState = Object.keys(entities).reduce((result, id) => {
-    result.entities[id] = entities[id]
+    result.entities[id] = {
+      ...state.entities[id],
+      ...entities[id]
+    }
     result.fetchStatus[id] = false
     return result
   }, {entities: {}, fetchStatus: {}, errors: {}})
@@ -101,7 +104,7 @@ const deleteDataBySchema = (state, schema, id) => {
   const key = getKey(schema)
   const {entities, errors, fetchStatus} = state[key]
 
-  delete entities[id]
+  // delete entities[id]
   delete errors[id]
   delete fetchStatus[id]
 
@@ -109,7 +112,6 @@ const deleteDataBySchema = (state, schema, id) => {
     ...state,
     [key]: {
       ...state[key],
-      entities: {...entities},
       errors: {...errors},
       fetchStatus: {...fetchStatus}
     }
@@ -156,6 +158,7 @@ export default (schema) => {
       let nextState = setErrorsBySchema(state, schema, id)
       return setStatusBySchema(nextState, schema, id, true)
     },
+    // 更新数据
     [UPDATE_ENTITY_SUCCESS]: (state, {schema, id, payload}) => {
       if (typeof payload === 'object') {
         payload[schema.idAttribute] = payload[schema.idAttribute] || id
@@ -202,9 +205,9 @@ export default (schema) => {
         return setStatusBySchema(nextState, schema, id, false)
       }
     },
-    [INSERT_ENTITY_FAILURE]: (state, {entity, id = 'delete', payload}) => {
-      let nextState = setErrorsBySchema(state, entity, id, payload)
-      return setStatusBySchema(nextState, entity, id, false)
+    [INSERT_ENTITY_FAILURE]: (state, {schema, id = 'insert', payload}) => {
+      let nextState = setErrorsBySchema(state, schema, id, payload)
+      return setStatusBySchema(nextState, schema, id, false)
     }
   })
 }
